@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Salsa';
+  src: url('../src/assets/fonts/Salsa-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  src: url('../src/assets/fonts/RobotoSlab-Regular.ttf') format('truetype');
+}
