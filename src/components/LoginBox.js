@@ -5,6 +5,7 @@ import  LockOutlinedIcon  from '@mui/icons-material/LockOutlined'
 import LoginButton from './LoginButton';
 import { Link } from 'react-router-dom';
 
+
 //Breakpoints
 // xs, extra-small: 0px
 // sm, small: 600px
@@ -64,7 +65,7 @@ const LoginBox = () => {
             </Grid>
             <Grid padding={2.5}>
               <Typography fontFamily='Arial' fontSize={17}> 
-                Don't have an acount? <Link>Sign Up</Link>
+                Don't have an acount? <Link to='/register'>Sign Up</Link>
               </Typography>
             </Grid>
           </Grid>
