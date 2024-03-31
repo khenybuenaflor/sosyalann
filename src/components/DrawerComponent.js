@@ -12,16 +12,21 @@ const DrawerComponent = () => {
     <Drawer
         sx={{
           width: 200,
+          
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: 200,
             boxSizing: 'border-box',
+            borderTopRightRadius:'20px',
+            borderBottomRightRadius:'20px',
+            backgroundColor:'#E5964D',
+            height: '70vh',
           },
         }}
         variant="permanent"
         anchor="left"
       >
-        <Logo />
+        <Logo color={'black'}/>
         <List>
           <ListItemComponent icon={<HomeOutlinedIcon />} primary="Home" />
           <ListItemComponent icon={<AccountCircleOutlinedIcon />} primary="Profile" />

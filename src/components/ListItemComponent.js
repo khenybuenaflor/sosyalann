@@ -1,11 +1,11 @@
 import React from 'react';
-import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 
 const ListItemComponent = ({ icon, primary }) => {
   return (
     <ListItemButton>
       <ListItemIcon>{icon}</ListItemIcon>
-      <ListItemText primary={primary} />
+      <ListItemText primary={<Typography fontFamily='Salsa' fontWeight={18} fontSize={18}>{primary}</Typography>} />
     </ListItemButton>
   );
 };
