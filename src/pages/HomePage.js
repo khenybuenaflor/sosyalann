@@ -4,9 +4,9 @@ import DrawerComponent from '../components/DrawerComponent';
 import ContentComponent from '../components/Content';
 import Suggested from '../components/Suggested';
 import CreatePost from '../components/CreatePost';
+import PropTypes from 'prop-types'
 
-const HomePage = () => {
-
+const HomePage = ({submitLogout}) => {
     const renderContentComponents = ()=>{
         const components=[];
         for (let i = 0;i<20;i++){
@@ -27,7 +27,9 @@ const HomePage = () => {
     flexGrow={1}>
         <Grid container direction='row'>
             <Grid item xs={3}>
-                <DrawerComponent/>
+                <DrawerComponent
+                submitLogout={submitLogout}
+                />
             </Grid>
             <Grid item xs={6} container direction='column' padding={2}>
                 <Grid>
@@ -41,9 +43,12 @@ const HomePage = () => {
                 <Suggested/>
             </Grid>
         </Grid>
-
     </Box>
   );
+}
+
+HomePage.propTypes = {
+    submitLogout:PropTypes.func.isRequired
 }
 
 export default HomePage

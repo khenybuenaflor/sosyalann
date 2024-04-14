@@ -1,12 +1,12 @@
 import React from 'react'
 import { TextField } from '@mui/material'
 
-const TextFieldComponent = ({label,type}) => {
+const TextFieldComponent = ({id,label,type}) => {
   return (
 
       <TextField
           required
-          id="outlined-required"
+          id={id}
           label={label}
           type={type}
           style={{margin:0,padding:0}}
