@@ -100,13 +100,26 @@ const AllPages = ()=> {
             }
         )
     }
-    if (currentUser){
-        return (
-            <HomePage
-            submitLogout={submitLogout}
-            /> 
+   if (currentUser){
+        return(
+                    <>
+                    {cancelToggle ? (
+                        <ConfirmEmailPage
+                        sendOTP={sendOTP}
+                        verifyOTP={verifyOTP}
+                        CancelToggle={toggleCancelEmailVer}
+                        setOTP={setOTP}
+                        OTP={OTP}
+                        />
+                    ):(
+                        <HomePage
+                        submitLogout={submitLogout}
+                        CancelToggle={toggleCancelEmailVer}/>
+                    )}
+                    </>
         );
-    }else{
+
+ }else{
         return(
             <>
             {registrationToggle ? (
@@ -132,7 +145,7 @@ const AllPages = ()=> {
             )}
         </>    
         )
-    }    
+    }
 }
 
 
