@@ -80,6 +80,26 @@ const AllPages = ()=> {
             setCurrentUser(false);
         });
     }
+    function sendOTP(e){
+        e.preventDefault();
+        client.post(
+            "/api/sessionsave",
+            {
+                email:email,
+                password:password
+            }
+        )
+    }
+    function verifyOTP(e){
+        e.preventDefault();
+        client.post(
+            "/api/otpver",
+            {
+                email:email,
+                OTP:OTP
+            }
+        )
+    }
     if (currentUser){
         return (
             <HomePage
@@ -114,5 +134,7 @@ const AllPages = ()=> {
         )
     }    
 }
+
+
 
 export default AllPages
