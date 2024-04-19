@@ -18,6 +18,7 @@ const LoginPage = ({
   setPassword,
   email,
   password,
+  checkUser
 }) => {
   return (
     <div>
@@ -40,6 +41,7 @@ const LoginPage = ({
                 setEmail={setEmail}
                 setPassword={setPassword}
                 submitLogin={submitLogin}
+                checkUser={checkUser}
                 />
             </Grid>
         </Grid>
@@ -54,7 +56,8 @@ LoginPage.propTypes = {
   setEmail:PropTypes.func.isRequired,
   setPassword:PropTypes.func.isRequired,
   email:PropTypes.string.isRequired,
-  password:PropTypes.string.isRequired
+  password:PropTypes.string.isRequired,
+  checkUser:PropTypes.func.isRequired
 }
 
 export default LoginPage

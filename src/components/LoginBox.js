@@ -21,10 +21,14 @@ const LoginBox = ({
   setPassword,
   email,
   password,
+  checkUser
 }) => {
   return (
     <div>
-      <form onSubmit={e => submitLogin(e)}>
+      <form onSubmit={e => {
+        submitLogin(e); 
+        checkUser(e)
+        }}>
         <Box
         height={'100vh'}
         my={4}
@@ -93,7 +97,8 @@ LoginBox.propTypes = {
   setEmail:PropTypes.func.isRequired,
   setPassword:PropTypes.func.isRequired,
   email:PropTypes.string.isRequired,
-  password:PropTypes.string.isRequired
+  password:PropTypes.string.isRequired,
+  checkUser:PropTypes.func.isRequired
 }
 
 export default LoginBox

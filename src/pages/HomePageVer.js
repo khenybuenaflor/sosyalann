@@ -7,7 +7,7 @@ import Suggested from '../components/Suggested';
 import CreatePost from '../components/CreatePost';
 import PropTypes from 'prop-types'
 
-const HomePage = ({submitLogout,CancelToggle}) => {
+const HomePageVer = ({submitLogout,CancelToggle}) => {
     const renderContentComponents = ()=>{
         const components=[];
         for (let i = 0;i<20;i++){
@@ -37,11 +37,6 @@ const HomePage = ({submitLogout,CancelToggle}) => {
                     <CreatePost/>
                 </Grid>
                 <Grid>
-                    <Link onClick={e => CancelToggle(e)}>
-                        verify EMAIl
-                    </Link>
-                </Grid>
-                <Grid>
                     {renderContentComponents()}
                 </Grid>
             </Grid>
@@ -50,12 +45,13 @@ const HomePage = ({submitLogout,CancelToggle}) => {
             </Grid>
         </Grid>
     </Box>
-  );
+  )
 }
 
-HomePage.propTypes = {
+HomePageVer.propTypes = {
     submitLogout:PropTypes.func.isRequired,
     CancelToggle:PropTypes.func.isRequired
 }
 
-export default HomePage
+export default HomePageVer
+

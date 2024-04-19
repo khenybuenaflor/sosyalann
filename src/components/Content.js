@@ -35,11 +35,9 @@ const ContentComponent = () => {
                 </Typography>
               </Grid>
               <Grid>
-                <Typography>
                     <Box border={'2px solid grey'} borderRadius='10px' height='200px'>
 
                     </Box> 
-                </Typography>
               </Grid>
             </Grid>
           </Grid>
