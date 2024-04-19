@@ -97,6 +97,45 @@ const AllPages = ()=> {
             setCurrentUser(false);
         });
     }
+    function sendOTP(e){
+        e.preventDefault();
+        client.post(
+            "/api/sessionsave",
+            {
+                email:email,
+                password:password
+            }
+        )
+    }
+    function verifyOTP(e){
+        e.preventDefault();
+        client.post(
+            "/api/otpver",
+            {
+                email:email,
+                OTP:OTP
+            }
+        )
+    }
+  if (currentUser){
+        return(
+                    <>
+                    {cancelToggle ? (
+                        <ConfirmEmailPage
+                        sendOTP={sendOTP}
+                        verifyOTP={verifyOTP}
+                        CancelToggle={toggleCancelEmailVer}
+                        setOTP={setOTP}
+                        OTP={OTP}
+                        />
+                    ):(
+                        <HomePage
+                        submitLogout={submitLogout}
+                        CancelToggle={toggleCancelEmailVer}/>
+                    )}
+                    </>
+        );
+}else{
 
 
     // function sendOTP(e){
@@ -236,6 +275,9 @@ const AllPages = ()=> {
             </>    
         )
     }
+    }
 }
+
+
 
 export default AllPages
