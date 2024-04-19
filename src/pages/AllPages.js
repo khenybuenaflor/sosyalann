@@ -225,7 +225,7 @@ const AllPages = ()=> {
                         setPassword={setPassword}
                         email={email}
                         password={password}
-                        //checkUser={checkuser}
+                        checkUser={checkuser}
                     />
                 )}
             </>    
