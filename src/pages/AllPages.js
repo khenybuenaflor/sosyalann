@@ -100,7 +100,7 @@ const AllPages = ()=> {
             }
         )
     }
-   if (currentUser){
+  if (currentUser){
         return(
                     <>
                     {cancelToggle ? (
@@ -118,8 +118,7 @@ const AllPages = ()=> {
                     )}
                     </>
         );
-
- }else{
+}else{
         return(
             <>
             {registrationToggle ? (
