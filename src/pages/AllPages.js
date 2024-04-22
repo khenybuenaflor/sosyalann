@@ -30,6 +30,7 @@ const AllPages = ()=> {
     const [password, setPassword] = useState('');
     const [OTP,setOTP] = useState('');
     const [emailVerified, setEmailVerified] = useState();
+    const [activeUser, setActiveUser] = useState('');
 
 
     function toggleRegistrationMode(e) {
@@ -44,9 +45,6 @@ const AllPages = ()=> {
         client.get("/api/user")
         .then(function(res){
             setCurrentUser(true);
-            const userData = res.data.user;
-            const isVerified = userData.is_verified
-            setEmailVerified(isVerified)
         })
         .catch(function(error) {
             setCurrentUser(false);
@@ -82,9 +80,19 @@ const AllPages = ()=> {
             {
                 email:email,
                 password:password,
+                
             }
         ).then(function(res) {
             setCurrentUser(true);
+            const {verified} = res.data;
+            const {username} = res.data;
+            setActiveUser(username)
+            if (verified === 'True'){
+                setEmailVerified(true)
+            }else{
+                setEmailVerified(false)
+            }
+            
           });
     }
 
@@ -117,6 +125,7 @@ const AllPages = ()=> {
             }
         )
     }
+
     // function sendOTP(e){
     //     e.preventDefault();
     //     client.post(
@@ -190,7 +199,9 @@ const AllPages = ()=> {
                     {cancelToggle ? (
                         <HomePage
                             submitLogout={submitLogout}
-                            CancelToggle={toggleCancelEmailVer}/>
+                            CancelToggle={toggleCancelEmailVer}
+                            activeUser={activeUser}
+                            />
                     ) : (
                         <ConfirmEmailPage
                             sendOTP={sendOTP}

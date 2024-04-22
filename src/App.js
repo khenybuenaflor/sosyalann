@@ -3,7 +3,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import AllPages from './pages/AllPages';
-import ConfirmEmailPage from './pages/ConfirmEmailPage';
+import ProfilePage from './pages/ProfilePage';
+import CreatePost from './components/CreatePost';
 // import AllPages2 from './pages/AllPages2';
 
 
@@ -17,7 +18,7 @@ function App() {
         <Route path='/register' Component={RegisterPage}/>
         <Route path='/login' Component={LoginPage}/>
         <Route path='/homepage' Component={HomePage}/>
-       
+        <Route path='/profile' Component={ProfilePage}/>
       </Routes>
     </Router>
       

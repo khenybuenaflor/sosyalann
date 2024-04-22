@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import DrawerComponent from '../components/DrawerComponent';
 import ContentComponent from '../components/Content';
 import Suggested from '../components/Suggested';
 import CreatePost from '../components/CreatePost';
 import PropTypes from 'prop-types'
 
-const HomePage = ({submitLogout,CancelToggle}) => {
+
+
+const HomePage = ({submitLogout,CancelToggle,activeUser}) => {
     const renderContentComponents = ()=>{
         const components=[];
         for (let i = 0;i<20;i++){
@@ -19,7 +21,7 @@ const HomePage = ({submitLogout,CancelToggle}) => {
         }
         return components;
     }
-
+    
   return (
     <Box
     display='flex'
@@ -30,11 +32,14 @@ const HomePage = ({submitLogout,CancelToggle}) => {
             <Grid item xs={3}>
                 <DrawerComponent
                 submitLogout={submitLogout}
-                />
+                activeUser={activeUser}
+                />    
             </Grid>
             <Grid item xs={6} container direction='column' padding={2}>
                 <Grid>
-                    <CreatePost/>
+                    <CreatePost
+                    activeUser={activeUser}
+                    />
                 </Grid>
                 <Grid>
                     <Link onClick={e => CancelToggle(e)}>
@@ -42,8 +47,14 @@ const HomePage = ({submitLogout,CancelToggle}) => {
                     </Link>
                 </Grid>
                 <Grid>
+                    <Typography>
+                        activeuse : {activeUser}
+                    </Typography>
+                </Grid>
+                <Grid>
                     {renderContentComponents()}
                 </Grid>
+                
             </Grid>
             <Grid item xs={3}>
                 <Suggested/>
@@ -55,7 +66,8 @@ const HomePage = ({submitLogout,CancelToggle}) => {
 
 HomePage.propTypes = {
     submitLogout:PropTypes.func.isRequired,
-    CancelToggle:PropTypes.func.isRequired
+    CancelToggle:PropTypes.func.isRequired,
+    activeUser:PropTypes.string.isRequired,
 }
 
 export default HomePage
