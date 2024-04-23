@@ -15,9 +15,9 @@ const client = axios.create({
   baseURL: "http://127.0.0.1:8000"
 });
 
-// const client = axios.create({
-//     baseURL: "http://192.168.1.9:8000"
-//   });
+ //const client = axios.create({
+    // baseURL: "http://192.168.138.91:8000"
+   //});
 
 
 const AllPages = ()=> {

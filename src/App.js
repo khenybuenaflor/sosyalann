@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import AllPages from './pages/AllPages';
 import ProfilePage from './pages/ProfilePage';
 import CreatePost from './components/CreatePost';
+import CreatePostPage from './pages/CreatePostPage';
 // import AllPages2 from './pages/AllPages2';
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/login' Component={LoginPage}/>
         <Route path='/homepage' Component={HomePage}/>
         <Route path='/profile' Component={ProfilePage}/>
+        <Route path='/createpost' Component={CreatePostPage}/>
       </Routes>
     </Router>
       

@@ -1,6 +1,7 @@
 import { Typography,Grid,Box, Divider, TextField } from '@mui/material';
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const CreatePost = ({
     activeUser
@@ -30,7 +31,9 @@ const CreatePost = ({
                     Video
                 </Grid>
                 <Grid>
-                    Post
+                    <Link to='createpost'>
+                        Post
+                    </Link>
                 </Grid>
             </Grid>
             
