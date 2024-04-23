@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useEffect,useState} from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Grid, Typography } from '@mui/material'
 import DrawerComponent from '../components/DrawerComponent';
@@ -6,21 +6,39 @@ import ContentComponent from '../components/Content';
 import Suggested from '../components/Suggested';
 import CreatePost from '../components/CreatePost';
 import PropTypes from 'prop-types'
+import axios from 'axios'
+import Content from '../components/Content';
 
+  axios.defaults.xsrfCookieName = 'csrftoken';
+  axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+  axios.defaults.withCredentials = true;
+
+  const client = axios.create({
+  baseURL: "http://127.0.0.1:8000"
+  });
 
 
 const HomePage = ({submitLogout,CancelToggle,activeUser}) => {
-    const renderContentComponents = ()=>{
-        const components=[];
-        for (let i = 0;i<20;i++){
-            components.push(
-            <Grid item key={i} paddingTop={2} paddingBottom={2}>
-                <ContentComponent />
-            </Grid>
-            );
-        }
-        return components;
+
+    const [posts, setPosts] = useState([]);
+    useEffect(()=>{
+        client.get(
+        "/api/getpost"
+        ).then (function(res){
+            const data = res.data
+            setPosts(data)
+        })
+    },[]);
+    
+    function getPost(){
+        client.get(
+            "/api/getpost"
+            ).then (function(res){
+                const data = res.data
+                setPosts(data)
+            },[]);
     }
+
     
   return (
     <Box
@@ -39,6 +57,7 @@ const HomePage = ({submitLogout,CancelToggle,activeUser}) => {
                 <Grid>
                     <CreatePost
                     activeUser={activeUser}
+                    fetchPost={getPost}
                     />
                 </Grid>
                 <Grid>
@@ -51,8 +70,10 @@ const HomePage = ({submitLogout,CancelToggle,activeUser}) => {
                         activeuse : {activeUser}
                     </Typography>
                 </Grid>
-                <Grid>
-                    {renderContentComponents()}
+                <Grid container spacing={2}>
+                    <Grid item xs ={12} paddingBottom={2} paddingTop={2}>
+                        <Content posts={posts}/>
+                    </Grid>
                 </Grid>
                 
             </Grid>

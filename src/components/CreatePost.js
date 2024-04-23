@@ -1,11 +1,24 @@
-import { Typography,Grid,Box, Divider, TextField } from '@mui/material';
-import React from 'react'
+import { Typography,Grid,Box, Divider, TextField, Button } from '@mui/material';
+import {React, useState} from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-
+import CreatePostDialog from '../pages/CreatePostDialog';
+import GestureIcon from '@mui/icons-material/Gesture';
 const CreatePost = ({
-    activeUser
+    activeUser,
+    fetchPost
 }) => {
+
+    const [isDialogueOpen, setDialogueOpen] = useState(false);
+
+    const handleOpenDialogue = () => {
+        setDialogueOpen(true);
+    };
+
+    const handleCloseDialog = () => {
+        setDialogueOpen(false);
+    };
+
   return (
     <Box border='2px solid grey' borderRadius='20px' height={110} alignItems='center' alignContent='center'>
         <Grid container direction='row' justifyContent='space-evenly' alignItems='center'>
@@ -31,19 +44,22 @@ const CreatePost = ({
                     Video
                 </Grid>
                 <Grid>
-                    <Link to='createpost'>
-                        Post
-                    </Link>
+                    <Button onClick={handleOpenDialogue} variant='text' autoFocus startIcon={<GestureIcon/>}>
+                        Threads
+                    </Button>
                 </Grid>
             </Grid>
-            
         </Grid>
+        {isDialogueOpen && (
+        <CreatePostDialog open={isDialogueOpen} onClose={handleCloseDialog} fetchPost={fetchPost} />
+      )}
    </Box>
   );
 }
 
 CreatePost.propTypes = {
-    activeUser:PropTypes.string.isRequired
+    activeUser:PropTypes.string.isRequired,
+    fetchPost:PropTypes.func.isRequired
 }
 
 export default CreatePost
