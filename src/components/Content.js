@@ -2,14 +2,17 @@ import { Typography,Box,Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
-
+import CommentIcon from '@mui/icons-material/Comment';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
   axios.defaults.xsrfCookieName = 'csrftoken';
   axios.defaults.xsrfHeaderName = 'X-CSRFToken';
   axios.defaults.withCredentials = true;
 
   const client = axios.create({
-  baseURL: "http://127.0.0.1:8000"
+  baseURL: "http://192.168.218.91:8000"
   });
 
 
@@ -22,13 +25,13 @@ const Content = ({posts}) => {
           flexGrow={1}
           sx={{ border: '2px solid grey', backgroundColor:'rgba(229,150,77,0.43)' }}
           borderRadius='20px'
-          height={100}
+          height={150}
           paddingTop={2}
           paddingBottom={2}
         >
             <Grid  container direction='row' padding={5}>
               <Grid item xs={2}>
-                Picture
+                
               </Grid>
     
               <Grid item xs={8}>
@@ -47,18 +50,18 @@ const Content = ({posts}) => {
               </Grid>
     
               <Grid item xs={2} container alignItems='center' justifyItems='flex-end' justifyContent='flex-end'>
-                <Grid container direction='column' alignItems='flex-end'>
+                <Grid container direction='column' alignItems='flex-end' justifyItems='space-evenly'>
                   <Grid>
-                    icon
+                    <FavoriteIcon/>
                   </Grid>
                   <Grid>
-                    icon
+                    <CommentIcon/>
                   </Grid>
                   <Grid>
-                    icon
+                    <BookmarkIcon/>
                   </Grid>
                   <Grid>
-                    icon
+                    <AccessTimeIcon/>
                   </Grid>
                 </Grid>
               </Grid>
